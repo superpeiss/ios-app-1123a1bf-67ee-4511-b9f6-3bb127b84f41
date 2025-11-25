@@ -1,0 +1,62 @@
+name: CloudFileBrowser
+
+options:
+  bundleIdPrefix: com.cloudfiles
+  deploymentTarget:
+    iOS: "15.0"
+  developmentLanguage: en
+  createIntermediateGroups: true
+
+settings:
+  MARKETING_VERSION: "1.0.0"
+  CURRENT_PROJECT_VERSION: "1"
+  SWIFT_VERSION: "5.9"
+  IPHONEOS_DEPLOYMENT_TARGET: "15.0"
+
+targets:
+  CloudFileBrowser:
+    type: application
+    platform: iOS
+    deploymentTarget: "15.0"
+    sources:
+      - CloudFileBrowser
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.cloudfiles.CloudFileBrowser
+      INFOPLIST_FILE: CloudFileBrowser/Info.plist
+      TARGETED_DEVICE_FAMILY: "1,2"
+      SWIFT_VERSION: "5.9"
+      ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+      ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+      ENABLE_PREVIEWS: YES
+      DEVELOPMENT_ASSET_PATHS: "\"CloudFileBrowser/Preview Content\""
+    scheme:
+      testTargets:
+        - CloudFileBrowserTests
+      gatherCoverageData: true
+
+  CloudFileBrowserTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - CloudFileBrowserTests
+    dependencies:
+      - target: CloudFileBrowser
+
+schemes:
+  CloudFileBrowser:
+    build:
+      targets:
+        CloudFileBrowser: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+      gatherCoverageData: true
+      targets:
+        - CloudFileBrowserTests
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release
